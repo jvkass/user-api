@@ -24,14 +24,6 @@ export const typeOrmWriteAndReplicaConfig = (
       password: configService.getOrThrow<string>("DB_PASSWORD"),
       database: configService.getOrThrow<string>("DB_NAME"),
     },
-    slaves: [
-      {
-        host: configService.getOrThrow<string>("DB_HOST_REPLICA"),
-        port: configService.getOrThrow<number>("DB_PORT"),
-        username: configService.getOrThrow<string>("DB_USERNAME"),
-        password: configService.getOrThrow<string>("DB_PASSWORD"),
-        database: configService.getOrThrow<string>("DB_NAME"),
-      },
-    ],
+    slaves: [],
   },
 });

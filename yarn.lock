@@ -5125,10 +5125,10 @@ os-tmpdir@~1.0.2:
   resolved "https://registry.yarnpkg.com/os-tmpdir/-/os-tmpdir-1.0.2.tgz#bbe67406c79aa85c5cfec766fe5734555dfa1274"
   integrity sha512-D2FR03Vir7FIu45XBY20mTb+/ZSWB00sjU9jdQXt83gDrI4Ztz5Fs7/yy74g2N5SVQY4xY1qDr4rNddwYRVX0g==
 
-oxide.ts@^1.1.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/oxide.ts/-/oxide.ts-1.1.0.tgz#591205d2d31270a95c677a61985a795443470e19"
-  integrity sha512-+MkqFRQVHEe/x4/cJ6KuYz2m2VpnoBi7aKLbttGYTxmpNZalQ2RbKH2HxyfsTqXJhjh9DYxulPWfQV/hWMmzCg==
+oxide.ts@0.9.12:
+  version "0.9.12"
+  resolved "https://registry.yarnpkg.com/oxide.ts/-/oxide.ts-0.9.12.tgz#b04dd0dc00579a534542eb1b7118910efdf62861"
+  integrity sha512-VsuyAniCrWEcGFvYqs0Ut/KS5ppXq16APoLcb+6TMhqxysrbZhoG9dCcKC67+1A1JuZTdK3m3yqtNCJCujpoNQ==
 
 p-defer@^3.0.0:
   version "3.0.0"
