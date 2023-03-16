@@ -12,7 +12,6 @@ import {
 import { ApiOperation, ApiResponse } from "@nestjs/swagger";
 import { routesV1 } from "@src/infrastructure/configs/app.routes";
 import { AbstractError } from "@src/libs/exceptions/abstract.error";
-//   import { AbstractError } from '@vivae-npm/shared/libs/exceptions/abstract.error';
 import { match, Result } from "oxide.ts/dist";
 import { UserInvalidError } from "../../domain/errors/user-invalid.errors";
 import { CreateUserCommand } from "./create-user.command";
