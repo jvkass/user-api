@@ -11,8 +11,10 @@ import {
 } from "@nestjs/common";
 import { ApiOperation, ApiResponse } from "@nestjs/swagger";
 import { routesV1 } from "@src/infrastructure/configs/app.routes";
+import { AbstractError } from "@src/libs/exceptions/abstract.error";
 //   import { AbstractError } from '@vivae-npm/shared/libs/exceptions/abstract.error';
 import { match, Result } from "oxide.ts/dist";
+import { UserInvalidError } from "../../domain/errors/user-invalid.errors";
 import { CreateUserCommand } from "./create-user.command";
 import { CreateUserRequestDTO } from "./create-user.request.dto";
 import { CreateUserService } from "./create-user.service";
@@ -41,21 +43,16 @@ export class CreateUserHttpController {
       password: body.password,
     });
 
-    const result: Result<
-      any,
-      any
-      //   AbstractError
-    > = await this.service.handle(command);
+    const result: Result<boolean, AbstractError> = await this.service.handle(
+      command,
+    );
 
-    return match(result, {
+    match(result, {
       Ok: (response: any) => response,
-      Err: (
-        error: any,
-        // AbstractError
-      ) => {
-        //   if (error instanceof UserInvalidError) {
-        //     throw new BadRequestException(error.code);
-        //   }
+      Err: (error: AbstractError) => {
+        if (error instanceof UserInvalidError) {
+          throw new BadRequestException(error.code);
+        }
 
         throw error;
       },
