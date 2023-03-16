@@ -7,6 +7,7 @@ import { UserPasswordOrmEntity } from "../../domain/entities/user-password.orm-e
 import { UserOrmEntity } from "../../domain/entities/user.orm-entity";
 import { UserRepository } from "../../domain/database/user.repository";
 import { UserInvalidError } from "../../domain/errors/user-invalid.errors";
+import { EmailExistError } from "../../domain/errors/email-exist.errors";
 
 @Injectable()
 export class CreateUserService {
@@ -18,6 +19,12 @@ export class CreateUserService {
     const { email, name, password } = command;
 
     try {
+      const existUser = await this.userRepository.findOneUserByMail(email);
+
+      if (existUser) {
+        return Err(new EmailExistError(""));
+      }
+
       const mailEntity = new UserMailOrmEntity(email, true);
       const passwordEntity = new UserPasswordOrmEntity(password, true);
       const userEntity = new UserOrmEntity(

@@ -13,6 +13,7 @@ import { ApiOperation, ApiResponse } from "@nestjs/swagger";
 import { routesV1 } from "@src/infrastructure/configs/app.routes";
 import { AbstractError } from "@src/libs/exceptions/abstract.error";
 import { match, Result } from "oxide.ts/dist";
+import { EmailExistError } from "../../domain/errors/email-exist.errors";
 import { UserInvalidError } from "../../domain/errors/user-invalid.errors";
 import { CreateUserCommand } from "./create-user.command";
 import { CreateUserRequestDTO } from "./create-user.request.dto";
@@ -49,6 +50,10 @@ export class CreateUserHttpController {
     match(result, {
       Ok: (response: any) => response,
       Err: (error: AbstractError) => {
+        if (error instanceof EmailExistError) {
+          throw new BadRequestException(error.code);
+        }
+
         if (error instanceof UserInvalidError) {
           throw new BadRequestException(error.code);
         }
