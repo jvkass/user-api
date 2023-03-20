@@ -1,0 +1,43 @@
+syntax = "proto3";
+
+package user;
+
+service UserService {
+  rpc FindUserByMail (UserMailRequest) returns (UserResponse) {}
+  rpc FindUserByMailPassword (UserMailPasswordRequest) returns (UserResponse) {}
+}
+
+message CreateUserRequest {
+  UserCreate user = 1;
+}
+
+message CreateUserResponse {
+  bool is_valid = 1;
+  string error = 2;
+}
+
+message UserMailRequest {
+  string mail = 1;
+}
+
+message UserMailPasswordRequest {
+  string email = 1;
+  string password = 2;
+}
+
+message UserResponse {
+  UserData user = 1;
+  string error = 2;
+}
+
+message UserCreate {
+  string email = 1;
+  string name = 2;
+  string password = 3;
+}
+
+message UserData {
+  string user_id = 1;
+  string email = 2;
+  string name = 3;
+}
