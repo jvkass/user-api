@@ -4,6 +4,7 @@ import * as compression from "compression";
 import * as bodyParser from "body-parser";
 import { ValidationPipe } from "@nestjs/common";
 import { ConfigService } from "@nestjs/config";
+import { MicroserviceOptions, Transport } from "@nestjs/microservices";
 import { AppModule } from "./app.module";
 
 async function bootstrap() {
@@ -31,6 +32,17 @@ async function bootstrap() {
     .build();
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup("docs", app, document);
+
+  app.connectMicroservice<MicroserviceOptions>({
+    transport: Transport.GRPC,
+    options: {
+      url: configService.getOrThrow<string>("GRPC_USER_API"),
+      protoPath: configService.getOrThrow<string>("GRPC_USER_API_PROTO_PATH"),
+      package: configService.getOrThrow<string>("GRPC_USER_API_PROTO_PACKAGE"),
+    },
+  });
+
+  await app.startAllMicroservices();
 
   app.useGlobalPipes(new ValidationPipe());
 

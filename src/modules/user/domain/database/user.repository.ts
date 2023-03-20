@@ -2,8 +2,10 @@ import { Injectable } from "@nestjs/common";
 import { DataSource, Repository } from "typeorm";
 import { InjectRepository } from "@nestjs/typeorm";
 import { IUser } from "@src/interface-adapters/interfaces/user/user.interface";
+import { IUserCred } from "@src/interface-adapters/interfaces/user/user-cred";
 import { UserOrmEntity } from "../entities/user.orm-entity";
 import { UserMailOrmEntity } from "../entities/user-mail.orm-entity";
+import { UserPasswordOrmEntity } from "../entities/user-password.orm-entity";
 
 @Injectable()
 export class UserRepository {
@@ -44,6 +46,38 @@ export class UserRepository {
         .where("user.is_active is true")
         .andWhere("userMail.mail = :mail", { mail })
         .andWhere("userMail.is_active is true")
+        .limit(1)
+        .setQueryRunner(masterQueryRunner)
+        .getRawOne();
+
+      return user;
+    } finally {
+      await masterQueryRunner.release();
+    }
+  }
+
+  async findOneUserPasswordByMail(mail: string): Promise<IUserCred> {
+    const masterQueryRunner = this.dataSource.createQueryRunner("master");
+
+    try {
+      const user = await this.userRepository
+        .createQueryBuilder("user")
+        .select("user.id", "userId")
+        .addSelect("user.name", "name")
+        .addSelect("userMail.mail", "email")
+        .addSelect("userPassword.password", "password")
+        .innerJoin(
+          UserMailOrmEntity,
+          "userMail",
+          "user.id = userMail.user_id AND userMail.is_active is true",
+        )
+        .innerJoin(
+          UserPasswordOrmEntity,
+          "userPassword",
+          "user.id = userPassword.user_id AND userPassword.is_active is true",
+        )
+        .where("user.is_active is true")
+        .where("userMail.mail = :mail", { mail })
         .limit(1)
         .setQueryRunner(masterQueryRunner)
         .getRawOne();

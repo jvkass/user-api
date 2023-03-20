@@ -4,6 +4,8 @@ import { TypeOrmModule } from "@src/infrastructure/adapters/database/typeorm/typ
 import { InfrastructureModule } from "@src/infrastructure/infrastructure.module";
 import { CreateUserHttpController } from "./commands/create-user/create-user.http.controller";
 import { CreateUserService } from "./commands/create-user/create-user.service";
+import { FindUserMailPasswordGrpcController } from "./commands/find-user-mail-password/find-user-mail-password.grpc.controller";
+import { FindUserMailPasswordService } from "./commands/find-user-mail-password/find-user-mail-password.service";
 import { UserRepository } from "./domain/database/user.repository";
 import { UserMailOrmEntity } from "./domain/entities/user-mail.orm-entity";
 import { UserPasswordOrmEntity } from "./domain/entities/user-password.orm-entity";
@@ -11,9 +13,9 @@ import { UserOrmEntity } from "./domain/entities/user.orm-entity";
 
 const httpControllers = [CreateUserHttpController];
 
-const grpcControllers = [""];
+const grpcControllers = [FindUserMailPasswordGrpcController];
 
-const commandHandlers = [CreateUserService];
+const commandHandlers = [CreateUserService, FindUserMailPasswordService];
 
 const repositories = [UserRepository];
 
@@ -25,10 +27,7 @@ const repositories = [UserRepository];
     }),
     InfrastructureModule,
   ],
-  controllers: [
-    // ...grpcControllers,
-    ...httpControllers,
-  ],
+  controllers: [...grpcControllers, ...httpControllers],
   providers: [...commandHandlers, ...repositories],
 })
 export class UserModule {}

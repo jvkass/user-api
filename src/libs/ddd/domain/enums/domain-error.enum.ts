@@ -1,0 +1,12 @@
+export enum DomainError {
+  APIE001 = "API-E001",
+  APIE002 = "API-E002",
+  APIE003 = "API-E003",
+  APIE004 = "API-E004",
+  APIE005 = "API-E005",
+  APIE006 = "API-E006",
+  APIE007 = "API-E007",
+  APIE008 = "API-E008",
+  APIE009 = "API-E009",
+  APIE010 = "API-E010",
+}
