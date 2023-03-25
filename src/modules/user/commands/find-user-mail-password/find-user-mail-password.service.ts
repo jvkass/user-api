@@ -8,10 +8,7 @@ import { UserRepository } from "../../domain/database/user.repository";
 
 @Injectable()
 export class FindUserMailPasswordService {
-  constructor(
-    private readonly userRepository: UserRepository,
-    private readonly cryptoService: CryptoService,
-  ) {}
+  constructor(private readonly userRepository: UserRepository) {}
 
   async handle(command: FindUserMailPasswordCommand): Promise<UserResponse> {
     try {
