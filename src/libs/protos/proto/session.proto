@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package session;
+
+service SessionService {
+    rpc ValidateSessionLogin (ValidateSessionLoginRequest) returns (ValidateSessionLoginResponse) {}
+}
+
+message ValidateSessionLoginRequest {
+    string access_token = 1;
+}
+
+message ValidateSessionLoginResponse {
+    bool is_valid = 1;
+    string error = 2;
+    SessionLogin session_login = 3;
+}
+
+message SessionLogin {
+    string user_id = 1;
+}

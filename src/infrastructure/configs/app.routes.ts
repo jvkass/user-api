@@ -4,5 +4,6 @@ export const routesV1 = {
   user: {
     root: userRoot,
     createUser: `${userRoot}/user`,
+    me: `${userRoot}/me`,
   },
 };

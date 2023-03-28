@@ -87,4 +87,31 @@ export class UserRepository {
       await masterQueryRunner.release();
     }
   }
+
+  async findOneUserByUserId(userId: string): Promise<IUser> {
+    const masterQueryRunner = this.dataSource.createQueryRunner("master");
+
+    try {
+      const user = await this.dataSource
+        .createQueryBuilder(UserOrmEntity, "user")
+        .select("user.id", "userId")
+        .addSelect("user.name", "name")
+        .addSelect("userMail.mail", "email")
+        .innerJoin(
+          UserMailOrmEntity,
+          "userMail",
+          "user.id = userMail.user_id AND userMail.is_active is true",
+        )
+        .where("user.is_active is true")
+        .andWhere("user.id = :id", { userId })
+        .andWhere("userMail.is_active is true")
+        .limit(1)
+        .setQueryRunner(masterQueryRunner)
+        .getRawOne();
+
+      return user;
+    } finally {
+      await masterQueryRunner.release();
+    }
+  }
 }
