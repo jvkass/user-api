@@ -103,7 +103,7 @@ export class UserRepository {
           "user.id = userMail.user_id AND userMail.is_active is true",
         )
         .where("user.is_active is true")
-        .andWhere("user.id = :id", { userId })
+        .andWhere("user.id = :userId", { userId })
         .andWhere("userMail.is_active is true")
         .limit(1)
         .setQueryRunner(masterQueryRunner)

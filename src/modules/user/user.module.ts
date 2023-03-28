@@ -6,16 +6,22 @@ import { CreateUserHttpController } from "./commands/create-user/create-user.htt
 import { CreateUserService } from "./commands/create-user/create-user.service";
 import { FindUserMailPasswordGrpcController } from "./commands/find-user-mail-password/find-user-mail-password.grpc.controller";
 import { FindUserMailPasswordService } from "./commands/find-user-mail-password/find-user-mail-password.service";
+import { GetUserHttpController } from "./commands/get-user/get-user.http.controller";
+import { GetUserService } from "./commands/get-user/get-user.service";
 import { UserRepository } from "./domain/database/user.repository";
 import { UserMailOrmEntity } from "./domain/entities/user-mail.orm-entity";
 import { UserPasswordOrmEntity } from "./domain/entities/user-password.orm-entity";
 import { UserOrmEntity } from "./domain/entities/user.orm-entity";
 
-const httpControllers = [CreateUserHttpController];
+const httpControllers = [CreateUserHttpController, GetUserHttpController];
 
 const grpcControllers = [FindUserMailPasswordGrpcController];
 
-const commandHandlers = [CreateUserService, FindUserMailPasswordService];
+const commandHandlers = [
+  CreateUserService,
+  FindUserMailPasswordService,
+  GetUserService,
+];
 
 const repositories = [UserRepository];
 
