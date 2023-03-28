@@ -29,6 +29,7 @@
     "docker:env": "docker-compose --file docker-compose.yml up --build"
   },
   "dependencies": {
+    "@golevelup/ts-jest": "^0.3.5",
     "@grpc/grpc-js": "^1.8.12",
     "@grpc/proto-loader": "^0.7.5",
     "@nestjs/common": "^9.0.0",
