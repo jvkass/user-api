@@ -14,7 +14,7 @@ import {
   SESSION_SERVICE_NAME,
 } from "src/libs/protos/proto/session.pb";
 
-const accessTokenInvalid = "VIVAE-E012";
+const accessTokenInvalid = "APP-E004";
 
 @Injectable()
 export class ValidateJwtGuardService implements OnModuleInit {

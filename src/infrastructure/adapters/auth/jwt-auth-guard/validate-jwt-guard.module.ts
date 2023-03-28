@@ -16,11 +16,11 @@ import { ValidateJwtGuardService } from "./validate-jwt-guard.service";
           transport: Transport.GRPC,
           options: {
             package: configService.getOrThrow<string>(
-              "GRPC_VIVAE_AUTH_API_SESSION_PROTO_PACKAGE",
+              "GRPC_AUTH_API_SESSION_PROTO_PACKAGE",
             ),
-            url: configService.getOrThrow<string>("GRPC_VIVAE_AUTH_API"),
+            url: configService.getOrThrow<string>("GRPC_AUTH_API"),
             protoPath: configService.getOrThrow<string>(
-              "GRPC_VIVAE_AUTH_API_SESSION_PROTO_PATH",
+              "GRPC_AUTH_API_SESSION_PROTO_PATH",
             ),
           },
         }),
@@ -39,11 +39,11 @@ import { ValidateJwtGuardService } from "./validate-jwt-guard.service";
           transport: Transport.GRPC,
           options: {
             package: configService.getOrThrow<string>(
-              "GRPC_VIVAE_AUTH_API_SESSION_PROTO_PACKAGE",
+              "GRPC_AUTH_API_SESSION_PROTO_PACKAGE",
             ),
-            url: configService.getOrThrow<string>("GRPC_VIVAE_AUTH_API"),
+            url: configService.getOrThrow<string>("GRPC_AUTH_API"),
             protoPath: configService.getOrThrow<string>(
-              "GRPC_VIVAE_AUTH_API_SESSION_PROTO_PATH",
+              "GRPC_AUTH_API_SESSION_PROTO_PATH",
             ),
           },
         }),
