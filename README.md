@@ -24,6 +24,10 @@ yarn
 
 yarn start:dev
 
+## OBS: deve se repetir os dois passos anteriores com a API de autenticação
+
+https://github.com/jvkass/auth-api.git
+
 ### Domain Errors
 
   APIE001 = "Email invalido"

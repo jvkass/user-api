@@ -1,0 +1,222 @@
+{
+  "_type": "export",
+  "__export_format": 4,
+  "__export_date": "2023-03-31T20:29:19.875Z",
+  "__export_source": "insomnia.desktop.app:v2023.1.0",
+  "resources": [
+    {
+      "_id": "req_ac2b9977bd6a41bca22600f8a0fa07f2",
+      "parentId": "fld_b2d09b72b09144909ecf12fff136d81a",
+      "modified": 1680292735641,
+      "created": 1678644007943,
+      "url": "{{ _.baseUrlHttpUserApiV1 }}user",
+      "name": "Create User",
+      "description": "",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n\t\"email\": \"vitor@gmail.com\",\n\t\"name\": \"Vitor\",\n\t\"password\":\"123456\"\n}"
+      },
+      "parameters": [],
+      "headers": [{ "name": "Content-Type", "value": "application/json" }],
+      "authentication": {},
+      "metaSortKey": -1678644007943,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "fld_b2d09b72b09144909ecf12fff136d81a",
+      "parentId": "fld_4efc5f55ac474b5e9430751b2bd29b66",
+      "modified": 1679355247447,
+      "created": 1678644006051,
+      "name": "User",
+      "description": "",
+      "environment": {},
+      "environmentPropertyOrder": null,
+      "metaSortKey": -1678644006051,
+      "_type": "request_group"
+    },
+    {
+      "_id": "fld_4efc5f55ac474b5e9430751b2bd29b66",
+      "parentId": "wrk_4518a0aabdb245439397c72bc248b484",
+      "modified": 1679355245438,
+      "created": 1679355245438,
+      "name": "http",
+      "description": "",
+      "environment": {},
+      "environmentPropertyOrder": null,
+      "metaSortKey": -1679355245438,
+      "_type": "request_group"
+    },
+    {
+      "_id": "wrk_4518a0aabdb245439397c72bc248b484",
+      "parentId": null,
+      "modified": 1678643864505,
+      "created": 1678643864505,
+      "name": "Micro services",
+      "description": "",
+      "scope": "collection",
+      "_type": "workspace"
+    },
+    {
+      "_id": "req_08f6952fb5544eb6a7ad790a7b9fbd1c",
+      "parentId": "fld_b2d09b72b09144909ecf12fff136d81a",
+      "modified": 1680293106220,
+      "created": 1679965740577,
+      "url": "{{ _.baseUrlHttpUserApiV1 }}me",
+      "name": "Me",
+      "description": "",
+      "method": "GET",
+      "body": {},
+      "parameters": [],
+      "headers": [],
+      "authentication": { "type": "bearer", "token": "" },
+      "metaSortKey": -1679965740577,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_1327706fadf14b9face5fb853e365d3e",
+      "parentId": "fld_5523b0ae0a4f4abeacede2151ea55d4d",
+      "modified": 1680293237689,
+      "created": 1679867832811,
+      "url": "{{ _.baseUrlHttpAuthApiV1 }}login/email",
+      "name": "Login",
+      "description": "",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n\t\t\t\"email\":\"vitor2@gmail.com\",\n\t\t\t\"password\":\"fb017d442d4730d76ad837d05d665c8d\"\n}"
+      },
+      "parameters": [],
+      "headers": [{ "name": "Content-Type", "value": "application/json" }],
+      "authentication": {},
+      "metaSortKey": -1679867832811,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "fld_5523b0ae0a4f4abeacede2151ea55d4d",
+      "parentId": "fld_4efc5f55ac474b5e9430751b2bd29b66",
+      "modified": 1679755833573,
+      "created": 1679755833573,
+      "name": "Auth",
+      "description": "",
+      "environment": {},
+      "environmentPropertyOrder": null,
+      "metaSortKey": -1679755833573,
+      "_type": "request_group"
+    },
+    {
+      "_id": "greq_b3c81265303c4ca6b084c476964b485f",
+      "parentId": "fld_6da949a0d51b438a8194c54c01a145b8",
+      "modified": 1679755666464,
+      "created": 1679355266489,
+      "url": "{{ _.baseUrlGRPCUserApi }}",
+      "name": "FindUserByEmailPassword",
+      "description": "",
+      "protoFileId": "pf_f6417d0286434042ab4cffd6747048f6",
+      "protoMethodName": "/user.UserService/FindUserByMailPassword",
+      "metadata": [],
+      "body": {
+        "text": "{\n\t\t\t\"email\":\"vitor@gmail.com\",\n\t\t\t\"password\":\"123456\"\n}"
+      },
+      "metaSortKey": -1679355266489,
+      "isPrivate": false,
+      "_type": "grpc_request"
+    },
+    {
+      "_id": "fld_6da949a0d51b438a8194c54c01a145b8",
+      "parentId": "fld_83bf10fdeac8485e98b3627d7498df02",
+      "modified": 1679755662184,
+      "created": 1679755662184,
+      "name": "User",
+      "description": "",
+      "environment": {},
+      "environmentPropertyOrder": null,
+      "metaSortKey": -1679755662184,
+      "_type": "request_group"
+    },
+    {
+      "_id": "fld_83bf10fdeac8485e98b3627d7498df02",
+      "parentId": "wrk_4518a0aabdb245439397c72bc248b484",
+      "modified": 1679755679827,
+      "created": 1679355255203,
+      "name": "gRPC",
+      "description": "",
+      "environment": {},
+      "environmentPropertyOrder": null,
+      "metaSortKey": -1679355255203,
+      "_type": "request_group"
+    },
+    {
+      "_id": "env_5e6e8f855d2af9e1f4e03f1e234a740819cda789",
+      "parentId": "wrk_4518a0aabdb245439397c72bc248b484",
+      "modified": 1679867858257,
+      "created": 1678643864517,
+      "name": "Base Environment",
+      "data": {
+        "baseUrlHttpAuthApiV1": "http://localhost:8002/v1/",
+        "baseUrlHttpUserApiV1": "http://localhost:8001/v1/",
+        "baseUrlGRPCUserApi": "0.0.0.0:50051"
+      },
+      "dataPropertyOrder": {
+        "&": [
+          "baseUrlHttpAuthApiV1",
+          "baseUrlHttpUserApiV1",
+          "baseUrlGRPCUserApi"
+        ]
+      },
+      "color": null,
+      "isPrivate": false,
+      "metaSortKey": 1678643864517,
+      "_type": "environment"
+    },
+    {
+      "_id": "jar_5e6e8f855d2af9e1f4e03f1e234a740819cda789",
+      "parentId": "wrk_4518a0aabdb245439397c72bc248b484",
+      "modified": 1678643864519,
+      "created": 1678643864519,
+      "name": "Default Jar",
+      "cookies": [],
+      "_type": "cookie_jar"
+    },
+    {
+      "_id": "spc_55e6ad634b124056986dfc6163cba253",
+      "parentId": "wrk_4518a0aabdb245439397c72bc248b484",
+      "modified": 1678643864506,
+      "created": 1678643864506,
+      "fileName": "Micro services",
+      "contents": "",
+      "contentType": "yaml",
+      "_type": "api_spec"
+    },
+    {
+      "_id": "pf_f6417d0286434042ab4cffd6747048f6",
+      "parentId": "wrk_4518a0aabdb245439397c72bc248b484",
+      "modified": 1679355323334,
+      "created": 1679355323334,
+      "name": "user.proto",
+      "protoText": "syntax = \"proto3\";\r\n\r\npackage user;\r\n\r\nservice UserService {\r\n  rpc FindUserByMail (UserMailRequest) returns (UserResponse) {}\r\n  rpc FindUserByMailPassword (UserMailPasswordRequest) returns (UserResponse) {}\r\n}\r\n\r\nmessage CreateUserRequest {\r\n  UserCreate user = 1;\r\n}\r\n\r\nmessage CreateUserResponse {\r\n  bool is_valid = 1;\r\n  string error = 2;\r\n}\r\n\r\nmessage UserMailRequest {\r\n  string mail = 1;\r\n}\r\n\r\nmessage UserMailPasswordRequest {\r\n  string email = 1;\r\n  string password = 2;\r\n}\r\n\r\nmessage UserResponse {\r\n  UserData user = 1;\r\n  string error = 2;\r\n}\r\n\r\nmessage UserCreate {\r\n  string email = 1;\r\n  string name = 2;\r\n  string password = 3;\r\n}\r\n\r\nmessage UserData {\r\n  string user_id = 1;\r\n  string email = 2;\r\n  string name = 3;\r\n}\r\n",
+      "_type": "proto_file"
+    }
+  ]
+}
