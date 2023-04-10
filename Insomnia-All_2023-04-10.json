@@ -1,7 +1,7 @@
 {
   "_type": "export",
   "__export_format": 4,
-  "__export_date": "2023-03-31T20:29:19.875Z",
+  "__export_date": "2023-04-10T21:58:26.657Z",
   "__export_source": "insomnia.desktop.app:v2023.1.0",
   "resources": [
     {
@@ -67,7 +67,7 @@
     {
       "_id": "req_08f6952fb5544eb6a7ad790a7b9fbd1c",
       "parentId": "fld_b2d09b72b09144909ecf12fff136d81a",
-      "modified": 1680293106220,
+      "modified": 1681163738200,
       "created": 1679965740577,
       "url": "{{ _.baseUrlHttpUserApiV1 }}me",
       "name": "Me",
@@ -76,7 +76,7 @@
       "body": {},
       "parameters": [],
       "headers": [],
-      "authentication": { "type": "bearer", "token": "" },
+      "authentication": { "type": "bearer", "token": "{{ _.tokenLogin }}" },
       "metaSortKey": -1679965740577,
       "isPrivate": false,
       "settingStoreCookies": true,
@@ -90,7 +90,7 @@
     {
       "_id": "req_1327706fadf14b9face5fb853e365d3e",
       "parentId": "fld_5523b0ae0a4f4abeacede2151ea55d4d",
-      "modified": 1680293237689,
+      "modified": 1681163281700,
       "created": 1679867832811,
       "url": "{{ _.baseUrlHttpAuthApiV1 }}login/email",
       "name": "Login",
@@ -98,7 +98,7 @@
       "method": "POST",
       "body": {
         "mimeType": "application/json",
-        "text": "{\n\t\t\t\"email\":\"vitor2@gmail.com\",\n\t\t\t\"password\":\"fb017d442d4730d76ad837d05d665c8d\"\n}"
+        "text": "{\n\t\t\t\"email\":\"vitor@gmail.com\",\n\t\t\t\"password\":\"fb017d442d4730d76ad837d05d665c8d\"\n}"
       },
       "parameters": [],
       "headers": [{ "name": "Content-Type", "value": "application/json" }],
@@ -170,19 +170,21 @@
     {
       "_id": "env_5e6e8f855d2af9e1f4e03f1e234a740819cda789",
       "parentId": "wrk_4518a0aabdb245439397c72bc248b484",
-      "modified": 1679867858257,
+      "modified": 1681163725409,
       "created": 1678643864517,
       "name": "Base Environment",
       "data": {
         "baseUrlHttpAuthApiV1": "http://localhost:8002/v1/",
         "baseUrlHttpUserApiV1": "http://localhost:8001/v1/",
-        "baseUrlGRPCUserApi": "0.0.0.0:50051"
+        "baseUrlGRPCUserApi": "0.0.0.0:50051",
+        "tokenLogin": "{% response 'body', 'req_1327706fadf14b9face5fb853e365d3e', 'b64::JC5hY2Nlc3NfdG9rZW4=::46b', 'never', 60 %}"
       },
       "dataPropertyOrder": {
         "&": [
           "baseUrlHttpAuthApiV1",
           "baseUrlHttpUserApiV1",
-          "baseUrlGRPCUserApi"
+          "baseUrlGRPCUserApi",
+          "tokenLogin"
         ]
       },
       "color": null,
