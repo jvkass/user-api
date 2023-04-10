@@ -10,6 +10,10 @@ https://nodejs.org/en
 
 npm install --global yarn
 
+## Padrões utilizados no Projeto
+
+https://docs.google.com/presentation/d/1lmSMY2AZKi0OcrkYT8Ix87mPzZnw0U4DAx_DiUCTA7U/edit?usp=share_link
+
 ## Como executar a api na maquina local
 
 #### Subir as instancias necessárias com o comando a seguir no terminal da sua IDE:
