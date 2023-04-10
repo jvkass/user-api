@@ -9,7 +9,6 @@ export class CreateUserRequestDTO {
   @MaxLength(320)
   @MinLength(5)
   @IsEmail()
-  @ValidateIf((o) => !o.email)
   readonly email: string;
 
   @ApiProperty({
