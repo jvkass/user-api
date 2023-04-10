@@ -32,22 +32,17 @@ export class CreateUserHttpController {
   @ApiResponse({
     status: HttpStatus.BAD_REQUEST,
   })
-  async create(
-    @Headers("host") ipAddress: string,
-    @Headers("user-agent") userAgent: string,
-    @Body() body: CreateUserRequestDTO,
-  ): Promise<any> {
+  async create(@Body() body: CreateUserRequestDTO): Promise<any> {
     const command = new CreateUserCommand({
       email: body.email,
       name: body.name,
       password: body.password,
     });
 
-    const result: Result<boolean, AbstractError> = await this.service.handle(
-      command,
-    );
+    const result: Result<{ passwordEncrypt: string }, AbstractError> =
+      await this.service.handle(command);
 
-    match(result, {
+    return match(result, {
       Ok: (response: any) => response,
       Err: (error: AbstractError) => {
         if (error instanceof EmailExistError) {

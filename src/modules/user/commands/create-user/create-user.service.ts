@@ -43,7 +43,9 @@ export class CreateUserService {
       );
       await this.userRepository.save(userEntity);
 
-      return Ok(true);
+      const passwordEncrypt = await this.cryptoService.encrypt(password);
+
+      return Ok({ passwordEncrypt });
     } catch (error) {
       return Err(new UserInvalidError(""));
     }
