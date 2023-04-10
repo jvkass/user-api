@@ -1,5 +1,15 @@
 # API de usuários
 
+## Pré-requisitos
+
+Docker, Nodejs e yarn
+
+https://www.docker.com/products/docker-desktop/
+
+https://nodejs.org/en
+
+npm install --global yarn
+
 ## Como executar a api na maquina local
 
 #### Subir as instancias necessárias com o comando a seguir no terminal da sua IDE:
