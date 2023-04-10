@@ -44,7 +44,7 @@ https://github.com/jvkass/auth-api.git
 
 ### Domain Errors
 
-  APIE001 = "Email invalido"
-  APIE002 = "Senha invalida"  
-  APIE003 = "Usuário não existe"  
-  APIE004 = "Access Token invalido"
+  |APIE001 | "Email invalido" |
+  |APIE002 | "Senha invalida" | 
+  |APIE003 | "Usuário não existe"|  
+  |APIE004 | "Access Token invalido"|
