@@ -2,7 +2,7 @@
 
 ## Como executar a api na maquina local
 
-#### Subir as instancias necessárias com o comando a seguir:
+#### Subir as instancias necessárias com o comando a seguir no terminal da sua IDE:
 
 docker compose up -d
 
