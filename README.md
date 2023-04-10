@@ -10,7 +10,7 @@ docker compose up -d
 
 git clone https://github.com/jvkass/migrator.git
 
-#### No projeto migrator foi criado migrations para criação das tabelas no banco de dados, para executar as mesmas, se faz necessário utilizar o comando abaixo:
+#### No pasta do projeto migrator foi criado migrations para criação das tabelas no banco de dados, para executar as mesmas, se faz necessário utilizar o comando abaixo:
 
 npm run typeorm:run-migrations
 
