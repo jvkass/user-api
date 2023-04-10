@@ -44,6 +44,7 @@ https://github.com/jvkass/auth-api.git
 
 ### Domain Errors
 
+  | Error  | Exemplo |
   |---|---|
   |APIE001 | "Email invalido" |
   |APIE002 | "Senha invalida" | 
