@@ -8,7 +8,7 @@ https://www.docker.com/products/docker-desktop/
 
 https://nodejs.org/en
 
-npm install --global yarn
+``npm install --global yarn``
 
 ## Padrões utilizados no Projeto
 
@@ -18,7 +18,7 @@ https://docs.google.com/presentation/d/1lmSMY2AZKi0OcrkYT8Ix87mPzZnw0U4DAx_DiUCT
 
 #### Subir as instancias necessárias com o comando a seguir no terminal da sua IDE:
 
-docker compose up -d
+``docker compose up -d``
 
 #### Após a execução das instancias baixar o projeto abaixo 
 
