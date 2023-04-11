@@ -38,7 +38,7 @@ https://docs.google.com/presentation/d/1lmSMY2AZKi0OcrkYT8Ix87mPzZnw0U4DAx_DiUCT
 
 ``yarn start:dev``
 
-## OBS: deve se repetir os dois passos anteriores com a API de autenticação
+## OBS: deve se repetir os dois passos anteriores com a API de autenticação e após execução das duas APIs utilizar do arquivo na raiz para importa na sua ferramenta de requisição como insomnia(Insomnia-All_2023-04-10.json) e postman (postman_collection.json)
 
 https://github.com/jvkass/auth-api.git
 
