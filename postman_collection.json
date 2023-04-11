@@ -1,0 +1,255 @@
+{
+  "info": {
+    "_postman_id": "dc2149c4-c7f9-4d3f-bbe6-b5dc641b9ff7",
+    "name": "MBA Project",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "2334794"
+  },
+  "item": [
+    {
+      "name": "Sucesso",
+      "item": [
+        {
+          "name": "01 - Create user",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "var jsonData1 = JSON.parse(pm.request.body);",
+                  "pm.collectionVariables.set(\"newUser\", jsonData1.email);",
+                  "var jsonData2 = JSON.parse(responseBody);",
+                  "pm.collectionVariables.set(\"newPass\", jsonData2.passwordEncrypt);",
+                  "pm.collectionVariables.set(\"access_token\", \"\");",
+                  "",
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "exec": [""],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"email\": \"{{$randomEmail}}\",\n    \"name\": \"Rafael\",\n    \"password\": \"123456\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8001/v1/user",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8001",
+              "path": ["v1", "user"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "02 - Autenticação",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "var jsonData = JSON.parse(responseBody);",
+                  "pm.collectionVariables.set(\"access_token\", jsonData.access_token);",
+                  "",
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"email\": \"{{newUser}}\",\n    \"password\": \"{{newPass}}\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8002/v1/login/email",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8002",
+              "path": ["v1", "login", "email"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "03 - Consultar usuario",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{access_token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8001/v1/me",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8001",
+              "path": ["v1", "me"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Erro",
+      "item": [
+        {
+          "name": "04 - Create user E001 ( já cadastrado )",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 400\", function () {",
+                  "    pm.response.to.have.status(400);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"email\": \"rafael.prudente.santos@gmail.com\",\n    \"name\": \"Rafael\",\n    \"password\": \"123456\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8001/v1/user",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8001",
+              "path": ["v1", "user"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "05 - Create user E001 ( invalido )",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 400\", function () {",
+                  "    pm.response.to.have.status(400);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"email\": \"rafael.prudente.santos\",\n    \"name\": \"Rafael\",\n    \"password\": \"123456\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8001/v1/user",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8001",
+              "path": ["v1", "user"]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "exec": [""]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "exec": [""]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "access_token",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "newUser",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "newPass",
+      "value": "",
+      "type": "string"
+    }
+  ]
+}
